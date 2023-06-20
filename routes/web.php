@@ -28,7 +28,7 @@ use App\Http\Controllers\MagicEditorController;
 
 
 use App\Http\Controllers\AnalyticsController;
-
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +56,14 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('dashboard');
 	})->name('dashboard');
 
+	Route::get('/send',[MailController::class,'Mailindex']);
 	
+
+
+
+	Route::post('/store_niche', [GivenNicheController::class, 'store_niche'])->name('store_niche');
+Route::post('/api/data', 'GivenNicheController@store');
+Route::post('/run-python-btn', 'GivenNicheController@run');
 
 	
 	Route::get('/editor', [BlogController::class, 'index']);
@@ -154,10 +161,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('/store_niche', [GivenNicheController::class, 'store_niche'])->name('store_niche');
 	
-	// Route::post('/runpythonscript', [GivenNicheController::class, 'runpythonscript'])->name('runpythonscript');
-	// Route::post('/combined-function', [GivenNicheController::class, 'combinedFunction'])->name('combined.function');
-	// Route::post('/store', [GivenNicheController::class, 'store'])->name('store');
-
+	
 	Route::post('/api/data', 'GivenNicheController@store');
 	Route::get('/loadtime', [LoadTimeController::class, 'front']);
     Route::post('/loadtime', [LoadTimeController::class, 'back'])->name('back');
@@ -174,28 +178,6 @@ Route::group(['middleware' => 'auth'], function () {
 	// Route::get('/keyword_ar', [GivenNichearController::class, 'index']);
     Route::post('/keyword_ar', [GivenNichearController::class, 'store_niche_ar'])->name('store_niche_ar');
 	
-	// Route::post('/run-python', function () {
-	// 	$output = exec('python3 script.py');
-	// 	return $output;
-	// });
-	// Route::get('/run-python-script', [PythonController::class, 'runScript']);
-
-	// Route::get('/run-python', function () {
-	// 	$output = exec('python3 script.py');
-	// 	return $output;
-	// });
-	
-
-// Route::get('/images', [ImageoptController::class, 'index']);
-// Route::post('/convert', [ImageoptController::class, 'convert'])->name('convert');
-
-// Route::get('/images', [ImageoptController::class, 'imageopt']);
-
-
-
-
-// 	Route::get('/imageopt', [ImageoptController::class, 'index']);
-//     Route::post('/imageopt', [ImageoptController::class, 'imageopt'])->name('imageopt');
 
 
 
@@ -332,4 +314,6 @@ Route::get('/tfidf', [tfidf::class, 'index']);
 
 // Route::get('/editor', [EditorController::class, 'showEditor']);
 // Route::post('/editor', [EditorController::class, 'display'])->name('display');
+
+
 
