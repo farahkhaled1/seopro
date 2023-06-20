@@ -1,4 +1,5 @@
 <?php $__env->startSection('content'); ?>
+<?php echo $__env->make('layouts.navbars.auth.loader', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
    
@@ -28,6 +29,20 @@
                     <?php if(Session::has("error")): ?>
                       <p><?php echo e(Session::get("error")); ?></p>
                     <?php endif; ?>
+<script>
+    // $('#run-python-btn').click(function () {
+    //     $.ajax({
+    //         method: 'POST',
+    //         url: '/run-python',
+    //         success: function (response) {
+    //             console.log(response);
+    //         },
+    //         error: function (xhr, status, error) {
+    //             console.log(xhr.responseText);
+    //         }
+    //     });
+    // });
+</script>
 
 <!-- <button class="btn bg-gradient-info w-100 "onclick="location.href='/run-python-script'">Generate</button> -->
 

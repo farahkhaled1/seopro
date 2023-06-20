@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('dashboard');
 	})->name('dashboard');
 
-	Route::get('/send',[MailController::class,'Mailindex']);
+	// Route::get('/send',[MailController::class,'Mailindex']);
 	
 
 
@@ -170,6 +170,9 @@ Route::post('/run-python-btn', 'GivenNicheController@run');
 
 	Route::get('/analyzer', [DomainController::class, 'index']);
     Route::post('/analyzer', [DomainController::class, 'result'])->name('result');
+	// Route::post('/analyzer', [DomainController::class, 'Mailindex'])->name('Mailindex');
+	// Route::post('/analyzer', [DomainController::class, 'processData'])->name('processData');
+
 
 	Route::get('/scrapeurl', [GivenUrlController::class, 'index']);
     Route::post('/scrapeurl', [GivenUrlController::class, 'store_url'])->name('store_url');
