@@ -25,12 +25,13 @@ import logging
 import sys
 args = sys.argv
 logger = logging.getLogger()
-logger.setLevel(args[1] if args[1].strip() else logging.INFO)
+# logger.setLevel(args[1] if args[1].strip() else logging.INFO)
+logger.setLevel(args[1] if len(args) > 1 and args[1].strip() else logging.INFO)
 formatter = logging.Formatter('%(asctime)s | %(levelname)s | %(message)s', 
                               '%m-%d-%Y %H:%M:%S')
 
 stdout_handler = logging.StreamHandler(sys.stdout)
-stdout_handler.setLevel(args[1] if args[1].strip() else logging.INFO)
+stdout_handler.setLevel(args[1] if len(args) > 1 and args[1].strip() else logging.INFO)
 stdout_handler.setFormatter(formatter)
 
 file_handler = logging.FileHandler('logs.log')
@@ -111,13 +112,7 @@ def scrape_google(query):
     query = urllib.parse.quote_plus(query)
     response = get_source("https://www.google.com/search?q=" + query)
     links = list(response.html.absolute_links)
-    # google_domains = ('https://www.google.', 
-    #                   'https://google.', 
-    #                   'https://webcache.googleusercontent.', 
-    #                   'http://webcache.googleusercontent.', 
-    #                   'https://policies.google.',
-    #                   'https://support.google.',
-    #                   'https://maps.google.')
+  
     
     google_domains = ('https://www.google.', 
                       'https://google.')

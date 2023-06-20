@@ -4,11 +4,6 @@
    
 
 <html>
-  
-
-
-
-
 
   <main class="main-content mt-0">
     <section>
@@ -30,21 +25,10 @@
                     <div class="text-center">
                       <button type="submit" class="btn bg-gradient-info w-100"id="run-python-btn">Generate</button>
                     <!-- <button id="run-python-btn">Run Python</button>  -->
+                    <?php if(Session::has("error")): ?>
+                      <p><?php echo e(Session::get("error")); ?></p>
+                    <?php endif; ?>
 
-<script>
-    // $('#run-python-btn').click(function () {
-    //     $.ajax({
-    //         method: 'POST',
-    //         url: '/run-python',
-    //         success: function (response) {
-    //             console.log(response);
-    //         },
-    //         error: function (xhr, status, error) {
-    //             console.log(xhr.responseText);
-    //         }
-    //     });
-    // });
-</script>
 <!-- <button class="btn bg-gradient-info w-100 "onclick="location.href='/run-python-script'">Generate</button> -->
 
                     </div>
@@ -124,7 +108,7 @@ $lastNiche = \App\Models\Niche::getLastNiche();
                 <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fa fa-ellipsis-v text-secondary"></i>
                 </a>
-                
+          
               </div>
             </div>
           </div>
@@ -133,7 +117,7 @@ $lastNiche = \App\Models\Niche::getLastNiche();
           <div class="table-responsive">
             <table class="table align-items-center mb-0">
               <thead>
-                
+           
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" title="The keywords that appear in your niche.">
                     Keyword
@@ -186,15 +170,6 @@ $lastNiche = \App\Models\Niche::getLastNiche();
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -379,10 +354,6 @@ $lastNiche = \App\Models\Niche::getLastNiche();
     }
   </script>
 <?php $__env->stopPush(); ?>
-
-
-
-
 
 
 <?php echo $__env->make('layouts.user_type.auth', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/farahkhaled/Desktop/seopro-1/resources/views/keyword.blade.php ENDPATH**/ ?>

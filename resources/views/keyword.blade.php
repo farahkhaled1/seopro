@@ -6,16 +6,6 @@
    
 
 <html>
-  {{-- @php
-        $highestTfidfKeyword = \App\Models\Keyword::getBestKeyword();
-
-  @endphp --}}
-
-{{-- <div class="mt-4">
-  <p>The most used keyword in your niche is: <strong>{{ $highestTfidfKeyword }}</strong></p>
-</div> --}}
-
-
 
   <main class="main-content mt-0">
     <section>
@@ -54,6 +44,7 @@
     //     });
     // });
 </script>
+
 <!-- <button class="btn bg-gradient-info w-100 "onclick="location.href='/run-python-script'">Generate</button> -->
 
                     </div>
@@ -133,11 +124,7 @@ $lastNiche = \App\Models\Niche::getLastNiche();
                 <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fa fa-ellipsis-v text-secondary"></i>
                 </a>
-                {{-- <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
-                </ul> --}}
+          
               </div>
             </div>
           </div>
@@ -146,12 +133,7 @@ $lastNiche = \App\Models\Niche::getLastNiche();
           <div class="table-responsive">
             <table class="table align-items-center mb-0">
               <thead>
-                {{-- <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keyword</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Keyword Relevance</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Top Keywords</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keyword Count</th>
-                </tr> --}}
+           
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" title="The keywords that appear in your niche.">
                     Keyword
@@ -205,86 +187,12 @@ $lastNiche = \App\Models\Niche::getLastNiche();
     </div>
   </div>
 
-{{-- 
-
-  <section>
-    <div class="page-header " style="margin-top: 80px">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-8 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-            <div class="card">
-              <div class="card-header pb-0 text-left bg-transparent">
-                <h3 class="font-weight-bolder" style="color: black"> The <span style="color: blue"> Most Used </span> Keyword in The 1st Page of The Search Engine Results Page is: <span style="color: blue">{{ $highestTfidfKeyword }}</strong></h3>
-                <p class="mb-0">Generate New Blog Ideas about any Keyword with our AI generator!</p>
-
-                <div class="numbers">
-                <br>
-<a href="{{ url('/ai')}}">
-    <button type="submit" class="btn bg-gradient-info w-100 font-weight-bolder mb-0" style="border-top-color: red">Generate New Content Ideas</button>
-</a>
-e              </div>
-              </div>
-
-
-              <div class="card-body">
-                
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
- --}}
 
 
 
 
 
 
-
-
-
-
-
-{{-- 
-
-
-       <div class="card z-index-2">
-        <div class="card-header pb-0">
-          <h6>Keywords overview</h6>
-          <p class="text-sm">
-            <i class="fa fa-arrow-up text-success"></i>
-            <span class="font-weight-bold">4% more</span> in 2021
-          </p>
-        </div>
-        <div class="card-body p-3">
-          <div class="chart">
-            
-            <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-          </div>
-        </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          --}}
-
-{{-- 
-  <div class="row mt-4">
-    <div class="col-lg-5 mb-lg-0 mb-4">
-     
-            <div class="chart">
-              <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
-            </div>
-          </div>
-         
-               
-                 
-          </div>
-        </div>
-      </div>
-    </div> --}}
     @endif
 @endsection
 </html>
@@ -463,161 +371,3 @@ e              </div>
   </script>
 @endpush
 
-
-
-
-{{-- <main class="main-content  mt-0">    
-    <section>
-      <div class="page-header min-vh-75" style="margin:-60px">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-8 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-              <div class="card">
-                <div class="card-header pb-0 text-left bg-transparent">
-                  <h3 class="font-weight-bolder" style="color: black">Enter your Niche Keyword</h3>
-                  <p class="mb-0">Generate the best keywords for your niche!</p>
-                </div>
-                <div class="card-body">
-
-                        <div class="mb-3">
-
-                        <input class="form-control" type="text" name="topic" placeholder="place new topic"><br><br>
-                      </div>
-
-                        <div class="text-center">
-                        <button type="button" class="btn bg-gradient-info w-100" style="">Generate</button>
-                      </div>
-            
-                  
-
-
-                </div>
-             
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-              </div>
-            </div>         
-          </div>
-        </div>
-        
-      </div>
-    </section>
-  </main>
-
-  
-
-  <tr>
-                  <td>
-                    <div class="d-flex px-2 py-1">
-                      
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Keyword 1</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="text-xs font-weight-bold" style="color:red ; margin-left:50px "> 92 </span>
-
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-xs font-weight-bold"> 8$ </span>
-                  </td>
-                  <td class="align-middle">
-                    <span class="text-xs font-weight-bold" style="margin-left: 100px"> 96K</span>
-
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="d-flex px-2 py-1">
-                    
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Keyword 2</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="avatar-group mt-2">
-                        <span class="text-xs font-weight-bold" style="color:red ; margin-left:50px  "> 86 </span>
-
-                    </div>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-xs font-weight-bold"> 2.5$</span>
-                  </td>
-                  <td class="align-middle">
-                    <span class="text-xs font-weight-bold" style="margin-left: 100px"> 90K</span>
-
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="d-flex px-2 py-1">
-                     
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Keyword 3</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="avatar-group mt-2">
-                        <span class="text-xs font-weight-bold" style="color:orange ; margin-left:50px  "> 76 </span>
-
-                    </div>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-xs font-weight-bold"> 2.3$ </span>
-                  </td>
-                  <td class="align-middle">
-                    <span class="text-xs font-weight-bold" style="margin-left: 100px"> 82K</span>
-
-                     
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="d-flex px-2 py-1">
-                     
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Keyword 4</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="avatar-group mt-2">
-                        <span class="text-xs font-weight-bold" style="color:orange ; margin-left:50px "> 63 </span>
-
-                    </div>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-xs font-weight-bold"> 3.2$ </span>
-                  </td>
-                  <td class="align-middle">
-                    <span class="text-xs font-weight-bold" style="margin-left: 100px"> 74K</span>
-
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="d-flex px-2 py-1">
-                      
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">keyword 5</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="text-xs font-weight-bold" style="color:green ; margin-left:50px  "> 43 </span>
-
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-xs font-weight-bold"> 1.5$ </span>
-                  </td>
-                  <td class="align-middle">
-                    <span class="text-xs font-weight-bold" style="margin-left: 100px"> 39K</span>
-
-                  </td>
-                </tr> --}}
