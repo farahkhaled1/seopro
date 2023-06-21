@@ -30,12 +30,9 @@ class Analytics extends Model
         $analyticss = DB::table('domain_analytics')
                         ->where('domain_url', $domain_url)
                         ->get(['date', 'domain_url', 'domain_rank', 'domain_auth', 'ctr_scope']);
-        
                        
         return $analyticss;
     }
-    
-
     
 
 

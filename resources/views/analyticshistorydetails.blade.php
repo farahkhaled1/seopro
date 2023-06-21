@@ -1,23 +1,19 @@
 @extends('layouts.user_type.auth')
 @section('content')
-@extends('analyticshistory')
 
 <div class="row my-4">
   <div class="col-lg-8 col-md-6 mb-md-0 mb-4" style="margin-left:180px">
     <div class="card">
       <div class="card-header pb-0">
 
-        <p>The passed value is: {{ $domain_url }}</p>
 
-        @php
-        $analyticss = session('analyticss');
-        @endphp
+        
         @php
         $analytics = \App\Models\Analytics::getDetails($domain_url);
     @endphp
     
 
-<h3>Your Searched URLs <span style="color: green"> </span></h3>
+<h3>Track Your URL's Progress <span style="color: green"> </span></h3>
 
           <div class="row">
 
@@ -44,23 +40,23 @@
               <thead>
               
                 <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" title="The keywords that appear in your niche.">
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" title="">
                     Date
                   </th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" title="The keywords that appear in your niche.">
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" title="">
                     Domain
                   </th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" data-toggle="tooltip" title="How relevant each keyword is to your niche.">
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" data-toggle="tooltip" title="">
                     <span>Domain Rank</span>
-                    <i class="fa fa-question-circle ms-1 text-lowercase" data-toggle="tooltip"  title="The relevance of each keyword to your niche."></i>
+                    <i class="fa fa-question-circle ms-1 text-lowercase" data-toggle="tooltip"  title=""></i>
                   </th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" data-toggle="tooltip" title="The top keywords based on their relevance to your niche.">
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" data-toggle="tooltip" title="">
                     <span  >Domain Authority</span>
-                    <i class="fa fa-question-circle ms-1 text-lowercase" title="The top keywords based on their relevance to your niche."></i>
+                    <i class="fa fa-question-circle ms-1 text-lowercase" title=""></i>
                   </th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" data-toggle="tooltip" title="How many times each keyword appears in your niche.">
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" data-toggle="tooltip" title="">
                     <span>CTR Scope</span>
-                    <i class="fa fa-question-circle ms-1 text-lowercase"  title="The number of times each keyword appears in your niche."></i>
+                    <i class="fa fa-question-circle ms-1 text-lowercase"  title=""></i>
                   </th>  
                 
                 </tr>
@@ -70,7 +66,7 @@
               
 
                 
-                 {{-- @foreach(\App\Models\Analytics::getDetails($domain_url) as $analytics)
+               @foreach(\App\Models\Analytics::getDetails($domain_url) as $analytics)
 
                  @php
                    $domain_url = $analytics->domain_url;
@@ -101,7 +97,7 @@
                          <span class="text-xs font-weight-bold" style="margin-left: 100px">{{ $analytics->ctr_scope }}</span>
                      </td>
                  </tr>
-             @endforeach --}}
+             @endforeach 
              
 
               </tbody>
@@ -114,7 +110,7 @@
       </div>
       <br>
       <br>
-      <div class="col-lg-12">
+      {{-- <div class="col-lg-12">
         <div class="card z-index-2">
           <div class="card-header pb-0">
             <h6>Traffic overview</h6>
@@ -130,14 +126,14 @@
           </div>
         </div>
       </div>
-    
+     --}}
 {{--       
     </div>
     
   </div>
 --}}
 
-  
+{{--   
 
   <div class="row mt-4"> 
     <div class="col-lg-12 mb-lg-0 mb-4">
@@ -260,7 +256,7 @@
       </div>
     </div>
   </div>
-  
+   --}}
 
 @endsection
 @push('dashboard')

@@ -109,30 +109,26 @@ Route::post('/run-python-btn', 'GivenNicheController@run');
 	// })->name('analyticshistorydetails');
 
 	
-	Route::get('analyticshistorydetails/{domain_url}', function ($domain_url) {
-		return view('analyticshistorydetails', ['domain_url' => $domain_url]);
-	})->name('analyticshistorydetails');
+	// Route::get('analyticshistorydetails/{domain_url}', function ($domain_url) {
+	// 	return view('analyticshistorydetails', ['domain_url' => $domain_url]);
+	// })->name('analyticshistorydetails');
 	
 	
 
 	Route::get('analyticshistory', function () {
 		return view('analyticshistory');
 	})->name('analyticshistory');
+
+	Route::get('analyticshistorydetails', [AnalyticsController::class, 'showDetails'])->name('analyticshistorydetails');
 
 
 	// Route::get('analyticshistorydetails', [AnalyticsController::class, 'showDetails'])->name('analyticshistorydetails');
 
 
-	Route::get('analyticshistory', function () {
-		return view('analyticshistory');
-	})->name('analyticshistory');
+	
 
 
-	Route::get('analyticshistorydetails', [AnalyticsController::class, 'showDetails'])->name('analyticshistorydetails');
 
-	// Route::get('analyticshistorydetails', function () {
-	// 	return view('analyticshistorydetails');
-	// })->name('analyticshistorydetails');
 
 	
 	Route::get('billing', function () {
@@ -143,9 +139,9 @@ Route::post('/run-python-btn', 'GivenNicheController@run');
 	// 	return view('profile');
 	// })->name('profile');
 
-	Route::get('rtl', function () {
-		return view('rtl');
-	})->name('rtl');
+	// Route::get('rtl', function () {
+	// 	return view('rtl');
+	// })->name('rtl');
 
 	Route::get('user-management', function () {
 		return view('laravel-examples/user-management');

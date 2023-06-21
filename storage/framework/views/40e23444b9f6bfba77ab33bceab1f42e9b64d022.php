@@ -7,7 +7,7 @@
           <a href="/user-profile" class="btn btn-white border-radius-lg p-2 mt-2" data-bs-toggle="tooltip" data-bs-placement="left" title="Home">
             <i class="fas fa-user p-2"></i>
           </a>
-          <a href="/dashboard" class="btn btn-white border-radius-lg p-2 mt-2" data-bs-toggle="tooltip" data-bs-placement="left" title="Home">
+          <a href="/dashboard" class="btn btn-white border-radius-lg p-2 mt-2" data-bs-toggle="tooltip" data-bs-placement="left" title="Profile">
             <i class="fas fa-home p-2"></i>
           </a>
          
