@@ -141,14 +141,19 @@ return view('analyzer', ['result' => $data]);
 
         if ($domainAnalytics) {
             // Prepare the data for the email body
+          
             $data = [
                 'subject' => 'Your Analytics Stats',
                 'body' => "Dear SEOPro user, here are your latest analytics stats:\n\n" .
-                    "Domain URL: " . $domainAnalytics->domain_url . "\n" .
-                    "Domain Rank: " . $domainAnalytics->domain_rank . "\n" .
-                    "Domain Authority: " . $domainAnalytics->domain_auth . "\n" 
-                    // Add other fields as needed
+                    "Domain URL: " . $domainAnalytics->domain_url . "\n\n" .
+                    "Domain Rank: " . $domainAnalytics->domain_rank . "\n\n" .
+                    "Domain Authority: " . $domainAnalytics->domain_auth . "\n\n" .
+                    "SEO Difficulty: " . $domainAnalytics->seo_difficulty . "\n\n" .
+                    "Backlinks: " . $domainAnalytics->backlinks . "\n\n" .
+                    "Search Volume: " . $domainAnalytics->search_volume . "\n\n" .
+                    "Thank you for using SEOPro"
             ];
+            
 
             try {
                 // Send the email
@@ -161,15 +166,5 @@ return view('analyzer', ['result' => $data]);
             return redirect('/analyzer')->with('error', 'No analytics data found.');
         }
     }
-    // public function processData(Request $request)
-    // {
-    //     // Call the first function
-    //     $this->result($request);
-    
-    //     // Call the second function
-    //     $this->Mailindex($request);
-    
-    
-    //     // Return a response if needed
-    //     }
+  
 }

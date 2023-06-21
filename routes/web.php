@@ -133,9 +133,9 @@ Route::post('/run-python-btn', 'GivenNicheController@run');
 		return view('billing');
 	})->name('billing');
 
-	Route::get('profile', function () {
-		return view('profile');
-	})->name('profile');
+	// Route::get('profile', function () {
+	// 	return view('profile');
+	// })->name('profile');
 
 	Route::get('rtl', function () {
 		return view('rtl');
