@@ -25,52 +25,26 @@ class GivenNicheController extends Controller
         if( self::runPythonScriptWithShell()){
             return redirect()->back();
         }
+
         
         return redirect()->back();
+
+
         // return redirect()->back()->with('success', 'Niche keyword added successfully.');
     }
     
-    public function store(Request $request)
-    {
-        $data = $request->all();
-        // Process the data here
-    }
-    
-    
-    public function runPythonScript()
-    {
-        
-        $pythonScriptPath = 'db_tf_idf.py';
-    
-        // Create a new process to execute the Python script
-        $process = new Process(['python', $pythonScriptPath]);
-    
-        // Start the process
-        $process->start();
-    
-        // Wait for the process to complete
-        while ($process->isRunning()) {
-            usleep(500000); // Wait for 0.5 seconds
-        }
-    
-        // Get the output of the process
-        $output = $process->getOutput();
-        return $output;
-        // $result = shell_exec('db_tf_idf.ipynb');
-        // return $result;
-        //  return redirect()->back()->with('success', 'Niche keyword added successfully.');
-        // Do something with the output, if needed
-    }
 
+    
+    
     private static function runPythonScriptWithShell()
     {
         $pythonScriptPath = 'db_tf_idf.py';
         $absolute_path = (("../python/English/".$pythonScriptPath));
-        $output = shell_exec("cd ".public_path()."&& ".env("PYTHON_PATH")." \"".$absolute_path."\" ERROR 2>&1");
+        $output = shell_exec("cd ".public_path()."&& python \"".$absolute_path."\" ERROR 2>&1");
         if(trim($output) == "success")
             return true;
         return false;
-    }  
+    }
         // Store the niche value in the user's session
        
     //     // return redirect()->back()->with('success', 'Niche keyword added successfully.');
@@ -116,21 +90,11 @@ class GivenNicheController extends Controller
     // $output = shell_exec('db_tf_idf.ipynb');
     // return $output;
     // return redirect()->back();
+
      
-    }
-
-    // private static function runPythonScriptWithShell()
-    // {
-    //     $pythonScriptPath = 'db_tf_idf.py';
-    //     $absolute_path = (("../python/English/".$pythonScriptPath));
-    //     $output = shell_exec("cd ".public_path()."&& ".env("PYTHON_PATH")." \"".$absolute_path."\" ERROR 2>&1");
-    //     if(trim($output) == "success")
-    //         return true;
-    //     return false;
-    // }   
+}
 
 
-    // }
 
 
 ?>
