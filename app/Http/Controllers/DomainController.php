@@ -34,7 +34,7 @@ curl_setopt_array($curl, [
 	CURLOPT_CUSTOMREQUEST => "GET",
 	CURLOPT_HTTPHEADER => [
 		"X-RapidAPI-Host: domain-seo-analysis.p.rapidapi.com",
-		"X-RapidAPI-Key: e1d4c245damsha7dc645641ffd43p142231jsn3330afedca88"
+		"X-RapidAPI-Key: 5741f12a7emsh9912a35152ff72ep1c6a59jsnd8607f3676c3"
 	],
 ]);
 $response = curl_exec($curl);
@@ -165,6 +165,16 @@ return view('analyzer', ['result' => $data]);
         } else {
             return redirect('/analyzer')->with('error', 'No analytics data found.');
         }
+    }
+
+    public function showAnalytics(Request $request)
+    {
+        $domainUrl = $request->input('domain_url');
+
+        // Perform any necessary operations with the domain URL (e.g., fetching analytics data)
+
+        // Pass the domain URL to the analytics view
+        return view('analytics')->with('domainUrl', $domainUrl);
     }
   
 }
