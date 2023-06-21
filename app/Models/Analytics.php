@@ -19,11 +19,27 @@ class Analytics extends Model
         $uid = Auth::id();
 
         $analytics = DB::table('domain_analytics')
-                    ->where('uid', $uid);
+                    ->where('uid', $uid)->get(['id','domain_url', 'domain_rank', 'domain_auth', 'ctr_scope']);
 
-        return static::where('uid', $uid) ->get(['id','domain_url', 'domain_rank', 'domain_auth', 'ctr_scope']);
+        return $analytics;
 
     }
+   
+    public static function getDetails($domain_url)
+    {
+        $analyticss = DB::table('domain_analytics')
+                        ->where('domain_url', $domain_url)
+                        ->get(['date', 'domain_url', 'domain_rank', 'domain_auth', 'ctr_scope']);
+        
+                       
+        return $analyticss;
+    }
+    
+
+    
+
+
+}
 
 
     // public static function getDetails($domain_url)
@@ -39,16 +55,5 @@ class Analytics extends Model
     
 //    return static:: get(['id','domain_url', 'domain_rank', 'domain_auth', 'ctr_scope']);
 // }
-
-    
-public static function getDetails($domain_url)
-{
-    return static::where('domain_url', $domain_url)->get(['date', 'domain_url', 'domain_rank', 'domain_auth', 'ctr_scope']);
-}
-
-    
-
-
-}
 
 ?>

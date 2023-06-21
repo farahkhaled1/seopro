@@ -103,6 +103,11 @@ Route::post('/run-python-btn', 'GivenNicheController@run');
 	// 	return view('analyticshistorydetails');
 	// })->name('analyticshistorydetails');
 
+	// Route::get('analyticshistorydetails/{domain_url}', function ($domain_url) {
+	// 	return view('analyticshistorydetails', ['domain_url' => $domain_url]);
+	// })->name('analyticshistorydetails');
+
+	
 	Route::get('analyticshistorydetails/{domain_url}', function ($domain_url) {
 		return view('analyticshistorydetails', ['domain_url' => $domain_url]);
 	})->name('analyticshistorydetails');

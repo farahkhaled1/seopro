@@ -82,7 +82,8 @@ $analytics = \App\Models\Analytics::getAnalytics();
                 
                 
 
-                <?php $__currentLoopData = \App\Models\Analytics::getAnalytics()->unique('domain_url'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $analytics): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+<?php $__currentLoopData = \App\Models\Analytics::getAnalytics()->unique('domain_url'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $analytics): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <tr>
         <td>
             <div class="d-flex px-2 py-1">
