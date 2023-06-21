@@ -1,16 +1,22 @@
 @extends('layouts.user_type.auth')
-
 @section('content')
+@extends('analyticshistory')
 
 <div class="row my-4">
   <div class="col-lg-8 col-md-6 mb-md-0 mb-4" style="margin-left:180px">
     <div class="card">
       <div class="card-header pb-0">
 
-        @php
-$analytics = \App\Models\Analytics::getDetails($domain_url);
+        <p>The passed value is: {{ $domain_url }}</p>
 
-@endphp
+        @php
+        $analyticss = session('analyticss');
+        @endphp
+        @php
+        $analytics = \App\Models\Analytics::getDetails($domain_url);
+    @endphp
+    
+
 <h3>Your Searched URLs <span style="color: green"> </span></h3>
 
           <div class="row">
@@ -62,31 +68,9 @@ $analytics = \App\Models\Analytics::getDetails($domain_url);
               </thead>
               <tbody>
               
-{{--                   
-               
-                @foreach(\App\Models\Analytics::getDetails()  as $analytics)
-                <tr>
-                    <td>
-                        <div class="d-flex px-2 py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">{{ $analytics->domain_url	 }}</h6>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="text-xs font-weight-bold" style="color:red ; margin-left:50px ">{{ $analytics->domain_rank	 }}</span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold">{{ $analytics->domain_auth }}</span>
-                    </td>
-                    <td class="align-middle">
-                        <span class="text-xs font-weight-bold" style="margin-left: 100px">{{ $analytics->ctr_scope }}</span>
-                    </td>
-                </tr>
-                @endforeach
-                 --}}
+
                 
-                 @foreach(\App\Models\Analytics::getDetails($domain_url) as $analytics)
+                 {{-- @foreach(\App\Models\Analytics::getDetails($domain_url) as $analytics)
 
                  @php
                    $domain_url = $analytics->domain_url;
@@ -117,7 +101,7 @@ $analytics = \App\Models\Analytics::getDetails($domain_url);
                          <span class="text-xs font-weight-bold" style="margin-left: 100px">{{ $analytics->ctr_scope }}</span>
                      </td>
                  </tr>
-             @endforeach
+             @endforeach --}}
              
 
               </tbody>
@@ -380,18 +364,7 @@ $analytics = \App\Models\Analytics::getDetails($domain_url);
               maxBarThickness: 6
 
             },
-            // {
-            //   label: "Websites",
-            //   tension: 0.4,
-            //   borderWidth: 0,
-            //   pointRadius: 0,
-            //   borderColor: "#3A416F",
-            //   borderWidth: 3,
-            //   backgroundColor: gradientStroke2,
-            //   fill: true,
-            //   data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
-            //   maxBarThickness: 6
-            // },
+       
           ],
         },
         options: {
@@ -454,3 +427,43 @@ $analytics = \App\Models\Analytics::getDetails($domain_url);
   </script>
 @endpush
 
+
+
+
+{{--               
+       // {
+            //   label: "Websites",
+            //   tension: 0.4,
+            //   borderWidth: 0,
+            //   pointRadius: 0,
+            //   borderColor: "#3A416F",
+            //   borderWidth: 3,
+            //   backgroundColor: gradientStroke2,
+            //   fill: true,
+            //   data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+            //   maxBarThickness: 6
+            // },    
+               
+                @foreach(\App\Models\Analytics::getDetails()  as $analytics)
+                <tr>
+                    <td>
+                        <div class="d-flex px-2 py-1">
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm">{{ $analytics->domain_url	 }}</h6>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="text-xs font-weight-bold" style="color:red ; margin-left:50px ">{{ $analytics->domain_rank	 }}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                        <span class="text-xs font-weight-bold">{{ $analytics->domain_auth }}</span>
+                    </td>
+                    <td class="align-middle">
+                        <span class="text-xs font-weight-bold" style="margin-left: 100px">{{ $analytics->ctr_scope }}</span>
+                    </td>
+                </tr>
+                @endforeach
+                 --}}
+
+                 

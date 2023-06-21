@@ -96,8 +96,22 @@ $analytics = \App\Models\Analytics::getAnalytics();
                     </td>
                 </tr>
                 @endforeach --}}
-
+{{-- 
                 @foreach(\App\Models\Analytics::getAnalytics()->unique('domain_url') as $analytics)
+    <tr>
+        <td>
+            <div class="d-flex px-2 py-1">
+                <div class="d-flex flex-column justify-content-center">
+                    <a href="{{ route('analyticshistorydetails', ['domain_url' => $analytics->domain_url]) }}">
+                        <h6 class="mb-0 text-sm">{{ $analytics->domain_url }}</h6>
+                    </a>
+                </div>
+            </div>
+        </td>
+    </tr>
+@endforeach --}}
+
+@foreach(\App\Models\Analytics::getAnalytics()->unique('domain_url') as $analytics)
     <tr>
         <td>
             <div class="d-flex px-2 py-1">
