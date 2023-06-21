@@ -1,8 +1,6 @@
+
+
 <?php $__env->startSection('content'); ?>
-
-
-   
-
 <html>
 
   <main class="main-content mt-0">
@@ -13,37 +11,21 @@
             <div class="col-xl-8 col-lg-5 col-md-6 d-flex flex-column mx-auto">
               <div class="card">
                 <div class="card-header pb-0 text-left bg-transparent">
-                  <h3 class="font-weight-bolder" style="color: black">Enter your Niche Keyword</h3>
-                  <p class="mb-0">Generate the best keywords for your niche!</p>
+                  <h3 class="font-weight-bolder" style="color: black">Enter your Arabic URL</h3>
+                  <p class="mb-0">Generate alternative word</p>
                 </div>
                 <div class="card-body">
-                  <form method="POST" action="<?php echo e(route('store_niche')); ?>">
+                  <form method="POST" action="<?php echo e(route('store_url')); ?>">
                     <?php echo csrf_field(); ?>
                     <div class="mb-3">
-                      <input class="form-control" type="text" name="niche" placeholder="Enter your niche keyword">
+                      <input class="form-control" type="text" name="url" placeholder="Enter your URL">
                     </div>
                     <div class="text-center">
                       <button type="submit" class="btn bg-gradient-info w-100"id="run-python-btn">Generate</button>
-                    <!-- <button id="run-python-btn">Run Python</button>  -->
+                      <!-- <button id="run-python-btn">Run Python</button> -->
                     <?php if(Session::has("error")): ?>
                       <p><?php echo e(Session::get("error")); ?></p>
                     <?php endif; ?>
-<script>
-    // $('#run-python-btn').click(function () {
-    //     $.ajax({
-    //         method: 'POST',
-    //         url: '/run-python',
-    //         success: function (response) {
-    //             console.log(response);
-    //         },
-    //         error: function (xhr, status, error) {
-    //             console.log(xhr.responseText);
-    //         }
-    //     });
-    // });
-</script>
-
-<!-- <button class="btn bg-gradient-info w-100 "onclick="location.href='/run-python-script'">Generate</button> -->
 
                     </div>
                   </form>
@@ -69,14 +51,14 @@
         <div class="card-header pb-0">
 
           <?php
-$lastNiche = \App\Models\Niche::getLastNiche();
+$lastURL = \App\Models\Synonyms::getSynonyms();
 
 
 ?>
 
-<?php if($lastNiche == null): ?>
+<?php if($lastURL == null): ?>
 
-<h4>You Don't Have Any Keyword Search History. <br> <span style="color: rgb(37,162,254)"> Start Ranking Your Website Today!</span> </h4>
+<h4>You Don't Have  History. <br> <span style="color: rgb(37,162,254)"> Start generating high rankng words!</span> </h4>
 
           <div class="row">
 
@@ -105,85 +87,60 @@ $lastNiche = \App\Models\Niche::getLastNiche();
 
 
 <?php else: ?>
-<h3>Your Last Search for: <span style="color: green"> <?php echo e($lastNiche); ?> </span></h3>
+<h3>Your Last Search for: <span style="color: green; font-size: 20px"> <?php echo e($lastURL); ?> </span></h3>
 
-          <div class="row">
-
-
-            <div class="col-lg-6 col-7">
-              
-              <h5 class="text-sm mb-0">
-                <i class="fa fa-check text-info" aria-hidden="true"></i>
-                <span class="font-weight-bold ms-1">The most frequent keywords used</span> this month
-              </h5>
-            </div>
-            <div class="col-lg-6 col-5 my-auto text-end">
-              <div class="dropdown float-lg-end pe-4">
-                <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fa fa-ellipsis-v text-secondary"></i>
-                </a>
-          
-              </div>
-            </div>
-          </div>
         </div>
         <div class="card-body px-0 pb-2">
           <div class="table-responsive">
             <table class="table align-items-center mb-0">
               <thead>
-           
                 <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" title="The keywords that appear in your niche.">
-                    Keyword
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"   title="Before">
+                  Before
                   </th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" data-toggle="tooltip" title="How relevant each keyword is to your niche.">
-                    <span>Keyword Relevance</span>
-                    <i class="fa fa-question-circle ms-1 text-lowercase" data-toggle="tooltip"  title="The relevance of each keyword to your niche."></i>
-                  </th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" data-toggle="tooltip" title="The top keywords based on their relevance to your niche.">
-                    <span  >Top Keywords</span>
-                    <i class="fa fa-question-circle ms-1 text-lowercase" title="The top keywords based on their relevance to your niche."></i>
-                  </th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" data-toggle="tooltip" title="How many times each keyword appears in your niche.">
-                    <span>Keyword Count</span>
-                    <i class="fa fa-question-circle ms-1 text-lowercase"  title="The number of times each keyword appears in your niche."></i>
-                  </th>  
-                
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"   title="After">
+                  After
+                </th>
                 </tr>
                 
               </thead>
               <tbody>
-              
-                  
-               
-                <?php $__currentLoopData = \App\Models\Keyword::getKeywords(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $keyword): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr>
-                    <td>
-                        <div class="d-flex px-2 py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm"><?php echo e($keyword->word); ?></h6>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="text-xs font-weight-bold" style="color:red ; margin-left:50px "><?php echo e($keyword->average_tfidf); ?></span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"><?php echo e($keyword->max_tfidf); ?></span>
-                    </td>
-                    <td class="align-middle">
-                        <span class="text-xs font-weight-bold" style="margin-left: 100px"><?php echo e($keyword->frequency); ?></span>
-                    </td>
-                </tr>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                
-              </tbody>
+              <?php $__currentLoopData = \App\Models\Scrape::getWords(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $word): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <tr>
+                  <td>
+                      <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm"><?php echo e($word->words_before); ?></h6>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm"><?php echo e($word->words_after); ?></h6>
+                          </div>
+                      </div>
+                  </td>
+              </tr>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+          
+            
+            </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -370,4 +327,7 @@ $lastNiche = \App\Models\Niche::getLastNiche();
 <?php $__env->stopPush(); ?>
 
 
-<?php echo $__env->make('layouts.user_type.auth', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\last semester\final project\seopro\resources\views/keyword.blade.php ENDPATH**/ ?>
+
+
+
+<?php echo $__env->make('layouts.user_type.auth', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\last semester\final project\seopro\resources\views/scrapeurl_ar.blade.php ENDPATH**/ ?>
