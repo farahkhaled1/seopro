@@ -1,3 +1,7 @@
+<?php echo $__env->make('layouts.navbars.auth.loader', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
+
+
 <?php $__env->startSection('content'); ?>
 
     
@@ -11,13 +15,11 @@
 
 <h3 class="ms-2 mt-4 mb-0"> Enter your website URL below <span class="text-success font-weight-bolder"> for a full domain analysis:</span>  </h3>
 
-
 <div class="card-body">
 
 
   <form role="form" method="POST" action=" <?php echo e(route('result')); ?> ">
       <?php echo csrf_field(); ?>
-      
       <br><br> 
       <div class="mb-3" style="margin-top: -40px">
 

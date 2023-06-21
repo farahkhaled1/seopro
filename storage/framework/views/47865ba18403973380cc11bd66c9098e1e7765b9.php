@@ -28,7 +28,7 @@
                       <input class="form-control" type="text" name="niche" placeholder="Enter your niche keyword">
                     </div>
                     <div class="text-center">
-                      <button type="submit" class="btn bg-gradient-info w-100"id="run-python-btn">Generate</button>
+                      <button type="submit" class="btn bg-gradient-info w-100"id="run-python-btn-ar">Generate</button>
                     <!-- <button id="run-python-btn">Run Python</button>  -->
                     <?php if(Session::has("error")): ?>
                       <p><?php echo e(Session::get("error")); ?></p>
