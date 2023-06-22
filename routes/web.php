@@ -66,9 +66,9 @@ Route::post('/api/data', 'GivenNicheController@store');
 Route::post('/run-python-btn', 'GivenNicheController@run');
 
 	
-	Route::get('/editor', [BlogController::class, 'index']);
+	Route::get('/editor/{id?}', [BlogController::class, 'index'])->name('blog-editor');
     Route::post('/editor', [BlogController::class, 'editor'])->name('editor');
-	
+	Route::put('/editor', [BlogController::class, 'editBlog']);
 
 	Route::get('/magiceditor', [MagicEditorController::class, 'index']);
 	Route::get('/magiceditor', [MagicEditorController::class, 'sendSentence'])->name('sendSentence');
@@ -123,6 +123,9 @@ Route::post('/run-python-btn', 'GivenNicheController@run');
 
 
 	// Route::get('analyticshistorydetails', [AnalyticsController::class, 'showDetails'])->name('analyticshistorydetails');
+
+
+	Route::get('/virtual-reality', [BlogController::class, 'showBlogs']);
 
 
 	
@@ -193,9 +196,9 @@ Route::post('/run-python-btn', 'GivenNicheController@run');
 		return view('tables');
 	})->name('tables');
 
-    Route::get('virtual-reality', function () {
-		return view('virtual-reality');
-	})->name('virtual-reality');
+    // Route::get('virtual-reality', function () {
+	// 	return view('virtual-reality');
+	// })->name('virtual-reality');
 
     Route::get('static-sign-in', function () {
 		return view('static-sign-in');

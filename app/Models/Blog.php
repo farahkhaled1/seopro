@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class Blog extends Model
 {
     protected $table = 'blog'; // the name of the MySQL table where keywords are stored
-  
+    protected $primaryKey = 'blogid';
     /**
      * Retrieve keywords for the 'cars' niche.
      *

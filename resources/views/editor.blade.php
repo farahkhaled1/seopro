@@ -4,7 +4,7 @@
 
 
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-8"> 
     <div class="card h-10 p-3">
       <h2 class="text-center mb-3" style="text-shadow: 2px 2px 4px #ffffff; font-family: 'Arial', sans-serif; font-size: 24px; font-weight: bold;">SEOPro Blog Editor</h2>
       <p class="text-center mb-3" style="text-shadow: 2px 2px 4px #ffffff; font-family: 'Arial', sans-serif; font-size: 18px;">Write engaging blogs with ease</p>
@@ -14,12 +14,14 @@
         <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
           <form method="post" action="{{ route('editor') }}">
             @csrf
+            @isset($blog)
+              <input type="hidden" name="id" value="{{$blog->blogid}}">
+              @method('PUT')
+              @endisset
             <div class="text-center">
               
                    
-              <textarea class="editor col-lg-30 mx-auto" style="height: 400px; width:700px; font-family: 'Arial', sans-serif; font-size: 16px; border-radius: 8px; padding: 10px; border: 1px solid #ccc;" name="blog" id="blog">
-               
-              </textarea>
+              <textarea class="editor col-lg-30 mx-auto" style="height: 400px; width:700px; font-family: 'Arial', sans-serif; font-size: 16px; border-radius: 8px; padding: 10px; border: 1px solid #ccc;" name="blog" id="blog">@if(isset($blog)) {{$blog->blog}} @endif</textarea>
               <br>
               <br>
               </div>
@@ -83,7 +85,7 @@
       const word = event.dataTransfer.getData('text/plain');
       textarea.value += word + ' ';
     }
-  
+  @if(!isset($blog))
     // Typewriter effect
     const sentenceElement = document.getElementById('blog');
     let sentence = sentenceElement.innerHTML.trim();
@@ -109,8 +111,9 @@
         setTimeout(typeWriter, speed);
       }
     }
-  
+    
     typeWriter();
+    @endif
   </script>
   
 @endsection
