@@ -54,8 +54,8 @@ import mysql.connector
 # Connect to the database
 mysql = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="",
+    user="seopro",
+    password="123456",
     database="seopro"
 )
 
@@ -197,12 +197,11 @@ output_df = tf_idf_analysis(u)
 logger.info (output_df)
 # Convert the DataFrame to a dictionary
 output_dict = output_df.to_dict('records')
-
 # Connect to the database
 mysql = mysql.connector.connect(
     host="localhost",
-    user="root",
-    passwd="",
+    user="seopro",
+    passwd="123456",
     database="seopro"
 )
 

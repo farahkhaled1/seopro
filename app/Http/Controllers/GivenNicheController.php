@@ -38,10 +38,13 @@ class GivenNicheController extends Controller
     
     private static function runPythonScriptWithShell()
     {
+	set_time_limit(0);   
+	ini_set('mysql.connect_timeout','0'); 
+	ini_set('max_execution_time', '0'); 
         $pythonScriptPath = 'db_tf_idf.py';
         $absolute_path = (("../python/English/".$pythonScriptPath));
-        $output = shell_exec("cd ".public_path()."&& python \"".$absolute_path."\" ERROR 2>&1");
-        if(trim($output) == "success")
+        $output = shell_exec("cd ".public_path()."&& ".env("PYTHON_PATH")." \"".$absolute_path."\" ERROR 2>&1");
+	if(trim(explode($output)[0]) == "success")
             return true;
         return false;
     }
