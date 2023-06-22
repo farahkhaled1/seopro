@@ -177,4 +177,15 @@ return view('analyzer', ['result' => $data]);
         return view('analytics')->with('domainUrl', $domainUrl);
     }
   
+    // public function processData(Request $request)
+    // {
+    //     // Call the first function
+    //     $this->result($request);
+    
+    //     // Call the second function
+    //     $this->Mailindex($request);
+    
+    
+    //     // Return a response if needed
+    //     }
 }
