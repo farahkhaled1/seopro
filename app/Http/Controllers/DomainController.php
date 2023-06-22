@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailNotify;
+use Exception;
 
 // use 
 class DomainController extends Controller
@@ -115,11 +117,59 @@ $data = [
     'search_volume' => $search_volume,
 ];
 
+$this->Mailindex($request);
+
+
 return view('analyzer', ['result' => $data]);
 // return view('analyzer',['result'=> $domain_rank, $domain_auth, $ctr_scope , $seo_difficulty, $off_page_difficulty, $on_page_difficulty, $indexed_pages, $page_authority, $popularity_score,$traffic,$traffic_costs, $organic_keywords, $backlinks, $equity, $cpc, $search_volume]);
 
 }
 
 }
+ public function Mailindex(Request $request)
+    {
+        // Get the user ID and the greatest ID number from the domain_analytics table
+        $userId = $request->user()->id;
+        $maxId = DB::table('domain_analytics')
+            ->where('uid', $userId)
+            ->max('id');
 
+        // Fetch the data for the greatest ID number
+        $domainAnalytics = DB::table('domain_analytics')
+            ->where('id', $maxId)
+            ->first();
+
+        if ($domainAnalytics) {
+            // Prepare the data for the email body
+            $data = [
+                'subject' => 'Your Analytics Stats',
+                'body' => "Dear SEOPro user, here are your latest analytics stats:\n\n" .
+                    "Domain URL: " . $domainAnalytics->domain_url . "\n" .
+                    "Domain Rank: " . $domainAnalytics->domain_rank . "\n" .
+                    "Domain Authority: " . $domainAnalytics->domain_auth . "\n" 
+                    // Add other fields as needed
+            ];
+
+            try {
+                // Send the email
+                Mail::to($request->user()->email)->send(new MailNotify($data));
+                return redirect('/analyzer');
+            } catch (Exception $th) {
+                return redirect('/analyzer')->with('error', 'Error');
+            }
+        } else {
+            return redirect('/analyzer')->with('error', 'No analytics data found.');
+        }
+    }
+    // public function processData(Request $request)
+    // {
+    //     // Call the first function
+    //     $this->result($request);
+    
+    //     // Call the second function
+    //     $this->Mailindex($request);
+    
+    
+    //     // Return a response if needed
+    //     }
 }

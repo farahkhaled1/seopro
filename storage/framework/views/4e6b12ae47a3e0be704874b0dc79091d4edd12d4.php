@@ -1,10 +1,7 @@
-<?php echo $__env->make('layouts.navbars.auth.loader', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
-
-
 <?php $__env->startSection('content'); ?>
 
-    
+<?php echo $__env->make('layouts.navbars.auth.loader', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
 <section>
   <div class="page-header min-vh-75" style="margin:-60px">
     <div class="container">

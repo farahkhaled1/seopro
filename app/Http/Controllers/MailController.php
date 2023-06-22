@@ -11,41 +11,41 @@ use Illuminate\Http\Request;
 
 class MailController extends Controller
 {
-    public function Mailindex(Request $request)
-    {
-        // Get the user ID and the greatest ID number from the domain_analytics table
-        $userId = $request->user()->id;
-        $maxId = DB::table('domain_analytics')
-            ->where('uid', $userId)
-            ->max('id');
+    // public function Mailindex(Request $request)
+    // {
+    //     // Get the user ID and the greatest ID number from the domain_analytics table
+    //     $userId = $request->user()->id;
+    //     $maxId = DB::table('domain_analytics')
+    //         ->where('uid', $userId)
+    //         ->max('id');
 
-        // Fetch the data for the greatest ID number
-        $domainAnalytics = DB::table('domain_analytics')
-            ->where('id', $maxId)
-            ->first();
+    //     // Fetch the data for the greatest ID number
+    //     $domainAnalytics = DB::table('domain_analytics')
+    //         ->where('id', $maxId)
+    //         ->first();
 
-        if ($domainAnalytics) {
-            // Prepare the data for the email body
-            $data = [
-                'subject' => 'Your Analytics Stats',
-                'body' => "Dear SEOPro user, here are your latest analytics stats:\n\n" .
-                    "Domain URL: " . $domainAnalytics->domain_url . "\n" .
-                    "Domain Rank: " . $domainAnalytics->domain_rank . "\n" .
-                    "Domain Authority: " . $domainAnalytics->domain_auth . "\n" 
-                    // Add other fields as needed
-            ];
+    //     if ($domainAnalytics) {
+    //         // Prepare the data for the email body
+    //         $data = [
+    //             'subject' => 'Your Analytics Stats',
+    //             'body' => "Dear SEOPro user, here are your latest analytics stats:\n\n" .
+    //                 "Domain URL: " . $domainAnalytics->domain_url . "\n" .
+    //                 "Domain Rank: " . $domainAnalytics->domain_rank . "\n" .
+    //                 "Domain Authority: " . $domainAnalytics->domain_auth . "\n" 
+    //                 // Add other fields as needed
+    //         ];
 
-            try {
-                // Send the email
-                Mail::to($request->user()->email)->send(new MailNotify($data));
-                return redirect('/analyzer');
-            } catch (Exception $th) {
-                return redirect('/analyzer')->with('error', 'Error');
-            }
-        } else {
-            return redirect('/analyzer')->with('error', 'No analytics data found.');
-        }
-    }
+    //         try {
+    //             // Send the email
+    //             Mail::to($request->user()->email)->send(new MailNotify($data));
+    //             return redirect('/analyzer');
+    //         } catch (Exception $th) {
+    //             return redirect('/analyzer')->with('error', 'Error');
+    //         }
+    //     } else {
+    //         return redirect('/analyzer')->with('error', 'No analytics data found.');
+    //     }
+    // }
 }
 
 

@@ -1,10 +1,10 @@
-@include('layouts.navbars.auth.loader')
 
 @extends('layouts.user_type.auth')
 
 @section('content')
 
-    
+@include('layouts.navbars.auth.loader')
+
 <section>
   <div class="page-header min-vh-75" style="margin:-60px">
     <div class="container">

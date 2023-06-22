@@ -26,7 +26,7 @@ class GivenNicheController extends Controller
             return redirect()->back();
         }
         
-        return redirect()->back()->with(["error"=>"Failed to process your request. Please try again later."]);
+        return redirect()->back();
         // return redirect()->back()->with('success', 'Niche keyword added successfully.');
     }
     
@@ -70,10 +70,10 @@ class GivenNicheController extends Controller
         $pythonScriptPath = 'db_tf_idf.py';
         $absolute_path = (("../python/English/".$pythonScriptPath));
         $output = shell_exec("cd ".public_path()."&& ".env("PYTHON_PATH")." \"".$absolute_path."\" ERROR 2>&1");
-	if(trim(explode($output)[0]) == "success")
+	if(trim(explode("\n",$output)[0]) == "success")
             return true;
         return false;
-    }    
+    }  
         // Store the niche value in the user's session
        
     //     // return redirect()->back()->with('success', 'Niche keyword added successfully.');
