@@ -73,7 +73,8 @@ Route::post('/run-python-btn', 'GivenNicheController@run');
 	Route::get('/magiceditor', [MagicEditorController::class, 'index']);
 	Route::get('/magiceditor', [MagicEditorController::class, 'sendSentence'])->name('sendSentence');
     Route::post('/magiceditor', [MagicEditorController::class, 'magiceditor'])->name('magiceditor');
-
+	Route::get('/scrapeurl_ar', [GivenUrlarController::class, 'index']);
+    Route::post('/scrapeurl_ar', [GivenUrlarController::class, 'store_url_ar'])->name('store_url_ar');
 
 	// Route::get('analyzer', function () {
 	// 	return view('analyzer');
@@ -162,9 +163,12 @@ Route::post('/run-python-btn', 'GivenNicheController@run');
 
 	Route::post('/api/data', 'GivenNicheController@store');
 
-
+	Route::post('/api/data', 'GivenNicheUrl@store');
+	Route::post('/api/data', 'GivenNichearController@store');
 
 	Route::post('/store_niche', [GivenNicheController::class, 'store_niche'])->name('store_niche');
+	Route::post('/store_url', [GivenUrlController::class, 'store_url'])->name('store_url');
+	Route::post('/store_niche_ar', [GivenNichearController::class, 'store_niche_ar'])->name('store_niche_ar');
 	
 	
 	Route::post('/api/data', 'GivenNicheController@store');
@@ -240,6 +244,9 @@ Route::get('/login', function () {
 
 Route::post('/run-python-btn', 'GivenNicheController@run');
 
+Route::post('/run-python-btn-url', 'GivenUrlController@run');
+
+Route::post('/run-python-btn-ar', 'GivenNichearController@run');
 // Route::get('/images', function () {
 //     return view('website_image');
 // })->name('website_image');

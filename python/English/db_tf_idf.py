@@ -115,7 +115,15 @@ def scrape_google(query):
   
     
     google_domains = ('https://www.google.', 
-                      'https://google.')
+                      'https://google.', 
+                      'https://webcache.googleusercontent.', 
+                      'http://webcache.googleusercontent.', 
+                      'https://policies.google.',
+                      'https://support.google.',
+                      'https://maps.google.')
+    
+    # google_domains = ('https://www.google.', 
+    #                   'https://google.')
      
 
     for url in links[:]:
@@ -145,14 +153,14 @@ for i in links:
     
 
 
-p_stemmer = PorterStemmer()
+# p_stemmer = PorterStemmer()
 
 
 
 
-for word in filtered_sentence:
-    # if len(word) >= 3:
-    word+' --> '+p_stemmer.stem(word)
+# for word in filtered_sentence:
+#     # if len(word) >= 3:
+#     word+' --> '+p_stemmer.stem(word)
 
 from nltk.stem.snowball import SnowballStemmer
 s_stemmer = SnowballStemmer(language='english')
@@ -162,7 +170,7 @@ s_stemmer = SnowballStemmer(language='english')
 for word in filtered_sentence:
     if len(word) >=4:
         word+' --> '+s_stemmer.stem(word)
-u=p_stemmer.stem(word)
+u=s_stemmer.stem(word)
 import mysql.connector
 
 ########
