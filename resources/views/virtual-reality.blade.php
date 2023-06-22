@@ -19,9 +19,10 @@
           <div class="d-flex">
             <div class="me-auto">
               {{-- <h1 class="display-1 font-weight-bold mt-n4 mb-0">28°C</h1> --}}
-              <h1 class="text-uppercase mb-0 ms-1">Your Workspace</h1>
+              <h1 class=" mb-0 ms-1">Welcome To Your Workspace {{ auth()->user()->name }}</h1>
             </div>
             
+
           </div>
           <div class="row mt-4">
             <div class="col-12 mt-4">
@@ -30,6 +31,70 @@
                   <h6 class="mb-1">Your Blogs</h6>
                   <p class="text-sm">Reach the right audience</p>
                 </div>
+
+
+
+
+                <div class="card-body p-3">
+                  @php
+                  $i = 1;
+                  @endphp
+                  <div class="row">
+                      @foreach ($blogs as $blog)
+                      <div class="col-xl-4 col-md-6 mb-xl-4 mb-4">
+                          <div class="card card-blog card-plain">
+                              <div class="position-relative">
+                                  <a class="d-block shadow-xl border-radius-xl">
+                                      <img src="../assets/img/home-decor-{{ $i % 3 + 1 }}.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                                  </a>
+                              </div>
+                              <div class="card-body px-1 pb-0">
+                                  <p class="text-gradient text-dark mb-2 text-sm">Project #{{ $i }}</p>
+                                  <a href="javascript:;">
+                                      <h5>
+                                          Blog {{ $i }}
+                                      </h5>
+                                  </a>
+                                  <p class="mb-4 text-sm">
+                                      {{ substr($blog->blog, 0, 50) }}...
+                                  </p>
+                                  <div class="d-flex align-items-center justify-content-between">
+                                    <a href="{{ route('blog-editor',$blog->blogid) }}">
+                                      <button type="button" class="btn btn-outline-primary btn-sm mb-0">Edit Blog</button>
+                                    </a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      @if ($i % 3 == 0)
+                  </div>
+                  <div class="row mt-4">
+                      @endif
+                      @php
+                      $i++;
+                      @endphp
+                      @endforeach
+
+                      <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                        <div class="card h-100 card-plain border">
+                            <div class="card-body d-flex flex-column justify-content-center text-center">
+                                <a href="{{ route('editor') }}">
+                                    <i class="fa fa-plus text-secondary mb-3"></i>
+                                    <h5 class="text-secondary">New Blog</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                 
+                    
+                  
+              </div>
+              
+
+
+
+{{-- 
                 <div class="card-body p-3">
                   <div class="row">
                     <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
@@ -69,9 +134,9 @@
                               Blog 2
                             </h5>
                           </a>
-                          <p class="mb-4 text-sm">
+                          {{-- <p class="mb-4 text-sm">
                             Music is something that every person has his or her own specific opinion about.
-                          </p>
+                          </p> 
                           <div class="d-flex align-items-center justify-content-between">
                             <button type="button" class="btn btn-outline-primary btn-sm mb-0">Edit Blog</button>
                             
@@ -93,24 +158,16 @@
                               Blog 3
                             </h5>
                           </a>
-                          <p class="mb-4 text-sm">
-                            For example, a restauranteur could regularly blog about everything from their favorite farmers' markets, to amusing an...                      </p>
+                          {{-- <p class="mb-4 text-sm">
+                            For example, a restauranteur could regularly blog about everything from their favorite farmers' markets, to amusing an...                      </p> 
                           <div class="d-flex align-items-center justify-content-between">
                             <button type="button" class="btn btn-outline-primary btn-sm mb-0">Edit Blog</button>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                      <div class="card h-100 card-plain border">
-                        <div class="card-body d-flex flex-column justify-content-center text-center">
-                          <a href="javascript:;">
-                            <i class="fa fa-plus text-secondary mb-3"></i>
-                            <h5 class=" text-secondary"> New Blog </h5>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
+                    </div> --}}
+
+                   
                   </div>
             
             
